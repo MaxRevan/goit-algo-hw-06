@@ -29,10 +29,11 @@ class Record:
         self.phones.append(Phone(phone))
 
     def remove_phone(self, phone):
-        if phone in self.phones:
-            return self.phones.remove(Phone(phone))
-        else:
-            raise ValueError("Phone does not exist.")
+        for p in self.phones:
+            if p.value == phone:
+                return self.phones.remove(p)
+            else:
+                raise ValueError("Phone does not exist.")
 
     def edit_phone(self, old_phone, new_phone):
         for phone in self.phones:
